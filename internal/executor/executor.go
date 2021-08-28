@@ -88,16 +88,9 @@ func execAction(cfg *config.Config, actualAction *config.ActionButton) *Internal
 	return res
 }
 
-func sanitizeAction(action *config.ActionButton) {
-	if action.Timeout < 3 {
-		action.Timeout = 3
-	}
-}
-
 func FindAction(cfg *config.Config, actionTitle string) (*config.ActionButton, error) {
 	for _, action := range cfg.ActionButtons {
 		if action.Title == actionTitle {
-			sanitizeAction(&action)
 
 			return &action, nil
 		}
